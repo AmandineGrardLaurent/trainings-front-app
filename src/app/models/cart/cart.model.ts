@@ -13,7 +13,21 @@ export class CartModel {
    * @param training The training to add
    */
   addTraining(training: TrainingModel) {
-    this.trainings.update((trainings) => [...trainings, training]);
+    // Update the signal to include the new training
+    this.trainings.update((trainings) => {
+      // Check if the training already exists in the cart
+      const index = trainings.findIndex((t) => t.id === training.id);
+      if (index !== -1) {
+        // Increment quantity
+        const updated = [...trainings];
+        updated[index] = {
+          ...updated[index],
+          quantity: updated[index].quantity + training.quantity,
+        };
+        return updated;
+      }
+      return [...trainings, training];
+    });
   }
 
   /**
