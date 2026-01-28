@@ -1,3 +1,12 @@
+import { CartComponent } from './components/cart/cart.component';
+import { TrainingsComponent } from './components/trainings/trainings.component';
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+// Define the application routes
+export const routes: Routes = [
+  // Route for the trainings page
+  { path: 'trainings', component: TrainingsComponent },
+
+  // Route for the cart page
+  { path: 'cart', component: CartComponent },
+];
