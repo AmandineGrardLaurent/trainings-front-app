@@ -1,0 +1,36 @@
+<div class="p-6 max-w-4xl mx-auto">
+  @if (listCartTrainings.length > 0) {
+    <table class="w-full shadow-lg">
+      <thead>
+        <tr class="bg-gray-200 text-gray-700">
+          <th class="border px-3 py-2 text-left">ID</th>
+          <th class="border px-3 py-2 text-left">Nom</th>
+          <th class="border px-3 py-2 text-left">Description</th>
+          <th class="border px-3 py-2 text-left">Prix</th>
+          <th class="border px-3 py-2 text-left">Quantité</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (training of listCartTrainings; track training.id) {
+          <tr class="even:bg-gray-50">
+            <td class="border px-3 py-2">{{ training.id }}</td>
+            <td class="border px-3 py-2">{{ training.name }}</td>
+            <td class="border px-3 py-2">{{ training.description }}</td>
+            <td class="border px-3 py-2">{{ training.price | currency: 'EUR' }}</td>
+            <td class="border px-3 py-2">{{ training.quantity }}</td>
+            <td class="border px-3 py-2">
+              <button
+                class="w-full p-1 bg-pink-400 text-white rounded-xl hover:bg-pink-500 transition"
+                (click)="removeTrainingFromCart(training)"
+              >
+                Supprimer
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <p class="text-gray-500 italic mt-2">Panier vide</p>
+  }
+</div>
