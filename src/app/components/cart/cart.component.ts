@@ -42,4 +42,9 @@ export class CartComponent implements OnInit {
   clearCart() {
     this.cartService.clearCart();
   }
+
+  // Update the quantity of a specific training in the cart
+  updateQuantity(training: TrainingModel, quantity: number) {
+    this.cartService.updateTrainingQuantityCart(training, quantity);
+  }
 }

@@ -21,7 +21,15 @@
             <td class="border px-4 py-2 font-medium text-gray-900">
               {{ training.price | currency: 'EUR' }}
             </td>
-            <td class="border px-4 py-2">{{ training.quantity }}</td>
+            <!-- <td class="border px-4 py-2">{{ training.quantity }}</td> -->
+            <td class="border px-4 py-2">
+              <input
+                type="number"
+                [value]="training.quantity"
+                (input)="updateQuantity(training, $any($event.target).valueAsNumber)"
+                class="w-20 p-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-400"
+              />
+            </td>
             <td class="border px-4 py-2">
               <button
                 class="w-full py-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition font-medium"
