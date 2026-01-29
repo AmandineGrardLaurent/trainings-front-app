@@ -3,9 +3,12 @@ import { TrainingsComponent } from './components/trainings/trainings.component';
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 // Define the application routes
 export const routes: Routes = [
+  { path: '', component: HomepageComponent },
+
   // Route for the trainings page
   { path: 'trainings', component: TrainingsComponent },
 
