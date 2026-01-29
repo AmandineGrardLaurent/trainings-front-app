@@ -37,4 +37,9 @@ export class CartComponent implements OnInit {
 
     // this.router.navigateByUrl('/trainings');
   }
+
+  // Clear all trainings from the cart
+  clearCart() {
+    this.cartService.clearCart();
+  }
 }
