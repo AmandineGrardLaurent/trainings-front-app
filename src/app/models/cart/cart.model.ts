@@ -48,4 +48,15 @@ export class CartModel {
   clearCart() {
     this.trainings.set([]);
   }
+
+  /**
+   * Update the quantity of a specific training in the cart
+   * @param training - The training to update
+   * @param quantity - The new quantity
+   */
+  updateTrainingQuantity(training: TrainingModel, quantity: number) {
+    this.trainings.update((trainings) =>
+      trainings.map((t) => (t.id === training.id ? { ...t, quantity } : t)),
+    );
+  }
 }
