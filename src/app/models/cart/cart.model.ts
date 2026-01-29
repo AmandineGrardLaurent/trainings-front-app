@@ -9,6 +9,7 @@ export class CartModel {
   trainings = signal<TrainingModel[]>([]);
 
   // Computed property to calculate the total price of the cart
+  // Computed is used to automatically recalculate when a signal it depends on changes
   totalPrice = computed(() => this.trainings().reduce((sum, t) => sum + t.price * t.quantity, 0));
 
   /**
