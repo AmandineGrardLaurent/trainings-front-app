@@ -39,4 +39,12 @@ export class CartService {
   clearCart() {
     this.cart.clearCart();
   }
+
+  /**
+   * Gets the total price of the cart
+   * @returns - The total price of all trainings in the cart
+   */
+  getTotalCart() {
+    return this.cart.totalPrice();
+  }
 }
