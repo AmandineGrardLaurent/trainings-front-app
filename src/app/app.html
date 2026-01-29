@@ -1,18 +1,45 @@
-<nav>
-  <div class="bg-pink-200 py-5 text-center">
-    <a class="text-3xl" href="#">Bienvenue chez FMS Mérignac !!</a>
+<nav class="bg-pink-200 shadow-md py-3 mb-4">
+  <!-- Header / Brand -->
+  <div class="py-5 text-center">
+    <a class="text-3xl font-bold text-gray-700" href="#"> Bienvenue chez FMS Mérignac</a>
   </div>
-  <ul class="flex flex-row">
-    <li class="bg-pink-200 border-white border-7 p-2">
-      <a routerLink="/trainings">Formations</a>
+
+  <!-- Navigation Links -->
+  <ul class="flex flex-wrap justify-center gap-2 bg-pink-200 py-2">
+    <li>
+      <a
+        routerLink="/trainings"
+        class="px-4 py-2 rounded-2xl bg-pink-400 text-white font-medium hover:bg-pink-500 transition"
+      >
+        Formations
+      </a>
     </li>
-    <li class="bg-pink-200 border-white border-7 p-2">
-      <a routerLink="/cart">Panier</a>
+    <li>
+      <a
+        routerLink="/cart"
+        class="px-4 py-2 rounded-2xl bg-pink-400 text-white font-medium hover:bg-pink-500 transition"
+      >
+        Panier
+      </a>
     </li>
-    <li class="bg-pink-200 border-white border-7 p-2">
-      <a routerLink="/register">Inscription</a>
+    <li>
+      <a
+        routerLink="/register"
+        class="px-4 py-2 rounded-2xl bg-pink-400 text-white font-medium hover:bg-pink-500 transition"
+      >
+        Inscription
+      </a>
     </li>
-    <li class="bg-pink-200 border-white border-7 p-2 w-full">...</li>
+    <li>
+      <a
+        routerLink="/profile"
+        class="px-4 py-2 rounded-2xl bg-pink-400 text-white font-medium hover:bg-pink-500 transition"
+      >
+        Profil
+      </a>
+    </li>
   </ul>
 </nav>
-<router-outlet> </router-outlet>
+
+<!-- Router outlet for views -->
+<router-outlet></router-outlet>
