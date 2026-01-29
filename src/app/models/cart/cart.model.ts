@@ -1,5 +1,5 @@
 import { TrainingModel } from './../training/training.model';
-import { signal } from '@angular/core';
+import { signal, computed } from '@angular/core';
 
 /**
  * Model representing a shopping cart
@@ -7,6 +7,9 @@ import { signal } from '@angular/core';
 export class CartModel {
   // Define a reactive signal that holds the list of trainings in the cart
   trainings = signal<TrainingModel[]>([]);
+
+  // Computed property to calculate the total price of the cart
+  totalPrice = computed(() => this.trainings().reduce((sum, t) => sum + t.price * t.quantity, 0));
 
   /**
    * Add a training to the cart
