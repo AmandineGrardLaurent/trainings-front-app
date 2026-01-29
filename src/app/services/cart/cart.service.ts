@@ -47,4 +47,8 @@ export class CartService {
   getTotalCart() {
     return this.cart.totalPrice();
   }
+
+  updateTrainingQuantityCart(training: TrainingModel, quantity: number) {
+    this.cart.updateTrainingQuantity(training, quantity);
+  }
 }
