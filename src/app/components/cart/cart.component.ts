@@ -13,6 +13,7 @@ import { CartService } from '../../services/cart/cart.service';
 export class CartComponent implements OnInit {
   // Local array to hold the trainings in the cart
   listCartTrainings: TrainingModel[] = [];
+  totalPrice: number = 0;
 
   constructor(
     private cartService: CartService,
@@ -21,6 +22,7 @@ export class CartComponent implements OnInit {
     // Create an effect to automatically update listCartTrainings whenever the signal changes
     effect(() => {
       this.listCartTrainings = this.cartService.trainings();
+      this.totalPrice = this.cartService.getTotalCart();
     });
   }
 
