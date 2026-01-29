@@ -1,7 +1,7 @@
 import { Component, OnInit, effect } from '@angular/core';
 import { TrainingModel } from '../../models/training/training.model';
 import { CommonModule } from '@angular/common';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../services/cart/cart.service';
 // import { Router } from '@angular/router';
 
 @Component({
