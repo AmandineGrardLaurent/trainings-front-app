@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     // private router: Router,
   ) {
-    // Create an effect to automatically update listCartTrainings whenever the signal changes
+    // Create an effect to automatically update listCartTrainings and totalPrice whenever the signal changes
     effect(() => {
       this.listCartTrainings = this.cartService.trainings();
       this.totalPrice = this.cartService.getTotalCart();
