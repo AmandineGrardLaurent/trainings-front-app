@@ -6,10 +6,17 @@
     Formations
   </button> -->
 
-  @if (listTrainings?.length) {
-    <h2 class="text-3xl font-bold mb-4 text-pink-500 text-center">
-      La liste des formations disponibles
-    </h2>
+  <h2 class="text-3xl font-bold mb-4 text-pink-500 text-center">
+    La liste des formations disponibles
+  </h2>
+  <input
+    type="text"
+    placeholder="Rechercher..."
+    class="w-full p-2 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-400"
+    (input)="searchText.set($any($event.target).value)"
+  />
+
+  @if (filteredTrainings().length) {
     <table class="w-full border-collapse">
       <thead>
         <tr class="bg-gray-200 text-gray-700">
@@ -22,7 +29,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (training of listTrainings; track training.id) {
+        @for (training of filteredTrainings(); track training.id) {
           <tr class="even:bg-gray-50 hover:bg-pink-50 transition">
             <td class="border px-4 py-2">{{ training.id }}</td>
             <td class="border px-4 py-2 font-semibold text-gray-800">{{ training.name }}</td>
@@ -39,12 +46,14 @@
               />
             </td>
             <td class="border px-4 py-2">
-              <button
-                class="w-full p-2 bg-pink-400 text-white rounded-xl hover:bg-pink-500 transition font-medium"
-                (click)="addToCart(training)"
-              >
-                Ajouter panier
-              </button>
+              <div class="flex items-center justify-center h-full">
+                <button
+                  class="px-4 py-2 bg-pink-400 text-white rounded-xl hover:bg-pink-500 transition font-medium whitespace-nowrap"
+                  (click)="addToCart(training)"
+                >
+                  Ajouter panier
+                </button>
+              </div>
             </td>
           </tr>
         }
