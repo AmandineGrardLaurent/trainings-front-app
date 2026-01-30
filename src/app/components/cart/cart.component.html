@@ -31,12 +31,14 @@
               />
             </td>
             <td class="border px-4 py-2">
-              <button
-                class="w-full py-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition font-medium"
-                (click)="removeTrainingFromCart(training)"
-              >
-                Supprimer
-              </button>
+              <div class="flex items-center justify-center h-full">
+                <button
+                  class="px-4 py-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition font-medium whitespace-nowrap"
+                  (click)="removeTrainingFromCart(training)"
+                >
+                  Supprimer
+                </button>
+              </div>
             </td>
           </tr>
         }
