@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Java",
+    "description": "Formation Java SE 8 sur 5 jours",
+    "price": 1500,
+    "quantity": 1
+  },
+  {
+    "id": 2,
+    "name": "DotNet",
+    "description": "Formation DotNet sur 3 jours",
+    "price": 1000,
+    "quantity": 1
+  },
+  {
+    "id": 3,
+    "name": "Python",
+    "description": "Formation Python sur 5 jours",
+    "price": 1500,
+    "quantity": 1
+  },
+  {
+    "id": 4,
+    "name": "React",
+    "description": "Formation React sur 2 jours",
+    "price": 800,
+    "quantity": 1
+  },
+  {
+    "id": 5,
+    "name": "Angular",
+    "description": "Formation Angular avancé avec Signals et Standalone Components (4 jours)",
+    "price": 1400,
+    "quantity": 1
+  },
+  {
+    "id": 6,
+    "name": "Spring Boot",
+    "description": "Développement d’API REST avec Spring Boot (5 jours)",
+    "price": 1600,
+    "quantity": 1
+  },
+  {
+    "id": 7,
+    "name": "Node.js",
+    "description": "Création d’API backend avec Node.js et Express (3 jours)",
+    "price": 1100,
+    "quantity": 1
+  },
+  {
+    "id": 8,
+    "name": "Docker",
+    "description": "Containerisation d’applications avec Docker (2 jours)",
+    "price": 900,
+    "quantity": 1
+  },
+  {
+    "id": 9,
+    "name": "Git & GitHub",
+    "description": "Gestion de versions et collaboration avec Git et GitHub (2 jours)",
+    "price": 700,
+    "quantity": 1
+  },
+  {
+    "id": 10,
+    "name": "TypeScript",
+    "description": "Maîtriser TypeScript pour les projets frontend et backend (3 jours)",
+    "price": 1000,
+    "quantity": 1
+  }
+]
