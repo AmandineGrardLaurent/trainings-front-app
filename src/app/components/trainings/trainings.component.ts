@@ -1,5 +1,5 @@
 import { CartService } from '../../services/cart/cart.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, computed } from '@angular/core';
 import { TrainingModel } from '../../models/training/training.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -12,16 +12,28 @@ import { Router } from '@angular/router';
 })
 export class TrainingsComponent implements OnInit {
   // Array to hold available trainings
-  listTrainings: TrainingModel[] | undefined;
+  listTrainings = signal<TrainingModel[]>([]);
+  searchText = signal('');
+
+  // Filtered trainings (reactive)
+  filteredTrainings = computed(() => {
+    const search = this.searchText().toLowerCase();
+
+    return this.listTrainings().filter(
+      (training) =>
+        training.name.toLowerCase().includes(search) ||
+        training.description.toLowerCase().includes(search),
+    );
+  });
 
   constructor(
-    private CartService: CartService,
+    private cartService: CartService,
     private router: Router,
   ) {}
 
   // Initialize the list of available trainings
   ngOnInit(): void {
-    this.listTrainings = [
+    this.listTrainings.set([
       {
         id: 1,
         name: 'Java',
@@ -50,12 +62,54 @@ export class TrainingsComponent implements OnInit {
         price: 800,
         quantity: 1,
       },
-    ];
+      {
+        id: 5,
+        name: 'Angular',
+        description: 'Formation Angular avancé avec Signals sur 4 jours',
+        price: 1400,
+        quantity: 1,
+      },
+      {
+        id: 6,
+        name: 'Spring Boot',
+        description: 'Développement d’API REST avec Spring Boot sur 5 jours',
+        price: 1600,
+        quantity: 1,
+      },
+      {
+        id: 7,
+        name: 'Node.js',
+        description: 'Création d’API backend avec Node.js et Express sur3 jours',
+        price: 1100,
+        quantity: 1,
+      },
+      {
+        id: 8,
+        name: 'Docker',
+        description: 'Containerisation d’applications avec Docker sur 2 jours',
+        price: 900,
+        quantity: 1,
+      },
+      {
+        id: 9,
+        name: 'Git & GitHub',
+        description: 'Gestion de versions et collaboration avec Git et GitHub sur 2 jours',
+        price: 700,
+        quantity: 1,
+      },
+      {
+        id: 10,
+        name: 'TypeScript',
+        description: 'Maîtriser TypeScript pour les projets frontend et backend sur 3 jours',
+        price: 1000,
+        quantity: 1,
+      },
+    ]);
   }
 
   // Add the selected training to the cart and navigate to the cart page
   addToCart(training: TrainingModel) {
-    this.CartService.addTraining(training);
+    this.cartService.addTraining(training);
     this.router.navigateByUrl('/cart');
   }
 }
