@@ -72,11 +72,16 @@
     }
   ],
   "users": [
-    { "email": "elbab@gmail.com", "password": "1234", "roles": ["ADMIN", "USER"] },
-    { "email": "hugo@gmail.com", "password": "1234", "roles": ["USER"] },
-    { "email": "martial@fms.fr", "password": "1234", "roles": ["USER"] },
-    { "email": "admin@fms.fr", "password": "admin", "roles": ["ADMIN"] },
-    { "email": "sarah@gmail.com", "password": "1234", "roles": ["USER"] },
-    { "email": "dev@fms.fr", "password": "dev", "roles": ["ADMIN", "USER"] }
+    {
+      "name": "claudine",
+      "email": "claudine@gmail.com",
+      "password": "1234",
+      "roles": ["ADMIN", "USER"]
+    },
+    { "name": "Hugo", "email": "hugo@gmail.com", "password": "1234", "roles": ["USER"] },
+    { "name": "Martial", "email": "martial@fms.fr", "password": "1234", "roles": ["USER"] },
+    { "name": "Admin", "email": "admin@fms.fr", "password": "admin", "roles": ["ADMIN"] },
+    { "name": "Sarah", "email": "sarah@gmail.com", "password": "1234", "roles": ["USER"] },
+    { "name": "Dev", "email": "dev@fms.fr", "password": "dev", "roles": ["ADMIN", "USER"] }
   ]
 }
