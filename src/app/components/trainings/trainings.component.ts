@@ -3,7 +3,7 @@ import { Component, OnInit, signal, computed } from '@angular/core';
 import { TrainingModel } from '../../models/training/training.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ApiService } from '../../services/api/api.service';
+import { ApiTrainingService } from '../../services/api/api-training.service';
 
 @Component({
   selector: 'app-trainings',
@@ -30,7 +30,7 @@ export class TrainingsComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
-    private apiService: ApiService,
+    private apiTraining: ApiTrainingService,
   ) {}
 
   // Initialize the list of available trainings
@@ -112,7 +112,7 @@ export class TrainingsComponent implements OnInit {
   }
 
   getAllTrainings() {
-    this.apiService.getTrainings().subscribe({
+    this.apiTraining.getTrainings().subscribe({
       next: (trainings) => this.listTrainings.set(trainings),
       error: (err) => console.error('Error fetching trainings:', err.message),
     });
