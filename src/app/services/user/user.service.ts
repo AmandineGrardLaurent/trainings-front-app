@@ -23,4 +23,10 @@ export class UserService {
   verifyUserExists(email: string) {
     return this.apiUserService.getUserByEmail(email).pipe(map((users) => users.length > 0));
   }
+
+  verifyUserPassword(email: string, password: string) {
+    return this.apiUserService
+      .getUserByEmail(email)
+      .pipe(map((users) => users.length > 0 && users[0].password === password));
+  }
 }
