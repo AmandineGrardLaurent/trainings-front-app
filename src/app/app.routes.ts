@@ -4,6 +4,7 @@ import { Routes } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
 
 // Define the application routes
 export const routes: Routes = [
@@ -20,4 +21,7 @@ export const routes: Routes = [
 
   // Route for the profile page
   { path: 'profile', component: ProfileComponent },
+
+  // Route for the authentication form page
+  { path: 'auth', component: AuthFormComponent },
 ];
