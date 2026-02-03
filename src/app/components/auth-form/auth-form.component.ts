@@ -24,14 +24,23 @@ export class AuthFormComponent {
   }
 
   loginUser() {
-    this.userService.verifyUserExists(this.authForm.value.email).subscribe((exists) => {
+    const { email, password } = this.authForm.value;
+    if (!email || !password) return;
+
+    this.userService.verifyUserExists(email).subscribe((exists) => {
       if (!exists) {
-        alert("L'utilisateur n'existe pas. Veuillez vous inscrire.");
+        alert('Utilisateur inexistant. Veuillez vous enregistrer.');
         this.router.navigateByUrl('/register');
-      } else {
-        // Navigate to the profile page after successful login
-        this.router.navigateByUrl('/profile');
+        return;
       }
+
+      this.userService.verifyUserPassword(email, password).subscribe((valid) => {
+        if (!valid) {
+          alert('Mot de passe incorrect');
+        } else {
+          this.router.navigateByUrl('/profile');
+        }
+      });
     });
   }
 }
