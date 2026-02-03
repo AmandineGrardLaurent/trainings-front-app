@@ -5,6 +5,7 @@ export class UserModel {
   name: string;
   email: string;
   password: string;
+  status: string[];
 
   /**
    * Creates a new user instance.
@@ -12,9 +13,10 @@ export class UserModel {
    * @param email - The email address of the user.
    * @param password - The password of the user.
    */
-  constructor(name: string, email: string, password: string) {
+  constructor(name: string, email: string, password: string, status: string[]) {
     this.name = name;
     this.email = email;
     this.password = password;
+    this.status = status;
   }
 }
