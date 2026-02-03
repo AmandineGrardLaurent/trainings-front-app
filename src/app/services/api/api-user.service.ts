@@ -16,4 +16,10 @@ export class ApiUserService {
   public getUserByEmail(email: string) {
     return this.http.get<UserModel[]>(`${environment.apiUrl}/users?email=${email.toLowerCase()}`);
   }
+
+  public postUser(user: UserModel) {
+    console.log('API - Creating user:', user);
+    const userNotAdmin = { ...user, roles: ['USER'] };
+    return this.http.post<UserModel>(`${environment.apiUrl}/users`, userNotAdmin);
+  }
 }
