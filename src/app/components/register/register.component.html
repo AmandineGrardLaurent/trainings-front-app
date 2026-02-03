@@ -11,6 +11,11 @@
         class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
         formControlName="name"
       />
+      @if (registerForm.get('name')?.invalid && registerForm.get('name')?.touched) {
+        <p class="text-red-500 text-sm mt-1">
+          Veuillez entrer un nom valide (minimum 3 caractères).
+        </p>
+      }
     </div>
 
     <!-- Email -->
@@ -22,6 +27,9 @@
         class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
         formControlName="email"
       />
+      @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+        <p class="text-red-500 text-sm mt-1">Veuillez entrer une adresse email valide.</p>
+      }
     </div>
 
     <!-- Password -->
@@ -33,12 +41,19 @@
         class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
         formControlName="password"
       />
+      @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+        <p class="text-red-500 text-sm mt-1">
+          Veuillez entrer un mot de passe valide (minimum 6 caractères, avec au moins une majuscule
+          et un chiffre).
+        </p>
+      }
     </div>
 
     <!-- Submit -->
     <button
       type="submit"
       class="w-full mt-4 py-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition"
+      [disabled]="registerForm.invalid"
     >
       S'inscrire
     </button>
