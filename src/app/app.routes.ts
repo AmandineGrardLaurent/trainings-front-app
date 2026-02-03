@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
+import { authGuard } from './guards/auth-guard';
 
 // Define the application routes
 export const routes: Routes = [
@@ -20,7 +21,11 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
 
   // Route for the profile page
-  { path: 'profile', component: ProfileComponent },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [authGuard],
+  },
 
   // Route for the authentication form page
   { path: 'auth', component: AuthFormComponent },
