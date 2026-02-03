@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiUserService } from '../../services/api/api-user.service';
+import { registerFormSchema } from '../../validators/register-form.schema';
 
 @Component({
   selector: 'app-register.component',
@@ -29,11 +30,7 @@ export class RegisterComponent {
     private router: Router,
     private apiUserService: ApiUserService,
   ) {
-    this.registerForm = this.fb.group({
-      name: [''],
-      email: [''],
-      password: [''],
-    });
+    this.registerForm = this.fb.group(registerFormSchema);
   }
   /**
    * Handles the user registration process.
