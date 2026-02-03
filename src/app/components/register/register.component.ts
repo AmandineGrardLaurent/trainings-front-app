@@ -2,6 +2,7 @@ import { UserService } from './../../services/user/user.service';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiUserService } from '../../services/api/api-user.service';
 
 @Component({
   selector: 'app-register.component',
@@ -26,6 +27,7 @@ export class RegisterComponent {
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router,
+    private apiUserService: ApiUserService,
   ) {
     this.registerForm = this.fb.group({
       name: [''],
@@ -38,12 +40,13 @@ export class RegisterComponent {
    */
   addUser() {
     if (this.registerForm.valid) {
-      this.userService.register(this.registerForm.value);
+      this.apiUserService.postUser(this.registerForm.value).subscribe((user) => {
+        this.userService.setUser(user);
+        alert('Inscription réussie ! Veuillez vous connecter.');
+      });
 
-      // Reset the form after submit
-      this.registerForm.reset();
-      // Navigate to the profile page after successful registration
-      this.router.navigateByUrl('/profile');
+      // Navigate to the auth page after successful registration
+      this.router.navigateByUrl('/auth');
     }
   }
 }
