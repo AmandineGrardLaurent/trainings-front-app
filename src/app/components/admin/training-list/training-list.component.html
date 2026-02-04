@@ -25,15 +25,16 @@
             <td class="border px-4 py-2">
               <div class="flex flex-col gap-2 items-center justify-center h-full">
                 <button
+                  (click)="deleteTraining.emit(training.id)"
                   class="px-4 py-2 w-full bg-pink-400 text-white rounded-xl hover:bg-pink-500 transition font-medium whitespace-nowrap"
                 >
                   Supprimer
                 </button>
-                <button
+                <!-- <button
                   class="px-4 py-2 w-full bg-pink-400 text-white rounded-xl hover:bg-pink-500 transition font-medium whitespace-nowrap"
                 >
                   Modifier
-                </button>
+                </button> -->
               </div>
             </td>
           </tr>
