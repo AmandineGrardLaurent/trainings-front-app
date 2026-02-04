@@ -48,12 +48,21 @@
       <span class="text-lg font-semibold text-gray-700">Total :</span>
       <span class="text-xl font-bold text-pink-500">{{ totalPrice | currency: 'EUR' }}</span>
     </div>
-    <button
-      class="w-auto p-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition font-medium"
-      (click)="clearCart()"
-    >
-      Vider le panier
-    </button>
+    <div class="flex gap-4">
+      <button
+        class="w-auto p-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition font-medium"
+        (click)="clearCart()"
+      >
+        Vider le panier
+      </button>
+      @if (isLoggedIn()) {
+        <button
+          class="w-auto p-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition font-medium"
+        >
+          Commander
+        </button>
+      }
+    </div>
   } @else {
     <p class="text-gray-500 italic mt-4 text-center">Panier vide</p>
   }
