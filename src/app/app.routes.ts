@@ -6,6 +6,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { authGuard } from './guards/auth-guard';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { adminGuard } from './guards/admin-guard';
 
 // Define the application routes
 export const routes: Routes = [
@@ -29,4 +31,7 @@ export const routes: Routes = [
 
   // Route for the authentication form page
   { path: 'auth', component: AuthFormComponent },
+
+  // Route for the admin dashboard page
+  { path: 'admin', component: AdminDashboardComponent, canActivate: [adminGuard] },
 ];
