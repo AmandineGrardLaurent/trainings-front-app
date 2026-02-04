@@ -2,5 +2,8 @@
   @if (users.length > 0) {
     <app-user-list [users]="users" (deleteUser)="onDeleteUser($event)"></app-user-list>
   }
-  <app-training-list [trainings]="trainings"></app-training-list>
+  <app-training-list
+    [trainings]="trainings"
+    (deleteTraining)="onDeleteTraining($event)"
+  ></app-training-list>
 </main>
