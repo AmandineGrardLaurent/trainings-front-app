@@ -14,6 +14,10 @@ export class ApiUserService {
     return this.http.get<UserModel[]>(`${environment.apiUrl}/users`);
   }
 
+  public getUserById(id: number) {
+    return this.http.get<UserModel[]>(`${environment.apiUrl}/users/${id}`);
+  }
+
   public getUserByEmail(email: string) {
     return this.http.get<UserModel[]>(`${environment.apiUrl}/users?email=${email.toLowerCase()}`);
   }
@@ -28,5 +32,9 @@ export class ApiUserService {
     return this.http
       .get<UserModel[]>(`${environment.apiUrl}/users`)
       .pipe(map((users) => users.filter((user) => user.status?.includes('ADMIN'))));
+  }
+
+  public deleteUser(id: number) {
+    return this.http.delete(`${environment.apiUrl}/users/${id}`);
   }
 }
