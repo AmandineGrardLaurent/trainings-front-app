@@ -1,0 +1,46 @@
+<div class="p-6 my-6 mx-auto bg-white rounded-2xl shadow-lg border border-gray-200">
+  <h2 class="text-3xl font-bold mb-4 text-pink-500 text-center">Gestion des formations</h2>
+
+  @if (trainings) {
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="bg-gray-200 text-gray-700">
+          <th class="border px-4 py-2 text-left">ID</th>
+          <th class="border px-4 py-2 text-left">Nom</th>
+          <th class="border px-4 py-2 text-left">Description</th>
+          <th class="border px-4 py-2 text-left">Prix</th>
+          <th class="border px-4 py-2 text-left"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (training of trainings; track training.id) {
+          <tr class="even:bg-gray-50 hover:bg-pink-50 transition">
+            <td class="border px-4 py-2">{{ training.id }}</td>
+            <td class="border px-4 py-2 font-semibold text-gray-800">{{ training.name }}</td>
+            <td class="border px-4 py-2 text-gray-700">{{ training.description }}</td>
+            <td class="border px-4 py-2 font-medium text-gray-900">
+              {{ training.price | currency: 'EUR' }}
+            </td>
+
+            <td class="border px-4 py-2">
+              <div class="flex flex-col gap-2 items-center justify-center h-full">
+                <button
+                  class="px-4 py-2 w-full bg-pink-400 text-white rounded-xl hover:bg-pink-500 transition font-medium whitespace-nowrap"
+                >
+                  Supprimer
+                </button>
+                <button
+                  class="px-4 py-2 w-full bg-pink-400 text-white rounded-xl hover:bg-pink-500 transition font-medium whitespace-nowrap"
+                >
+                  Modifier
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <p class="text-gray-500 italic mt-4 text-center">Aucune formation existante</p>
+  }
+</div>
