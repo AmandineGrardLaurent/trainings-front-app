@@ -6,7 +6,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { authGuard } from './guards/auth-guard';
-import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { adminGuard } from './guards/admin-guard';
 
 // Define the application routes
