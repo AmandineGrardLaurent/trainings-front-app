@@ -73,15 +73,53 @@
   ],
   "users": [
     {
+      "id": 1,
       "name": "claudine",
       "email": "test@gmail.com",
       "password": "1234",
-      "roles": ["ADMIN", "USER"]
+      "status": ["ADMIN", "USER"]
     },
-    { "name": "Hugo", "email": "hugo@gmail.com", "password": "1234", "roles": ["USER"] },
-    { "name": "Martial", "email": "martial@fms.fr", "password": "1234", "roles": ["USER"] },
-    { "name": "Admin", "email": "admin@fms.fr", "password": "admin", "roles": ["ADMIN"] },
-    { "name": "Sarah", "email": "sarah@gmail.com", "password": "1234", "roles": ["USER"] },
-    { "name": "Dev", "email": "dev@fms.fr", "password": "dev", "roles": ["ADMIN", "USER"] }
+    {
+      "id": 2,
+      "name": "Hugo",
+      "email": "hugo@gmail.com",
+      "password": "1234",
+      "status": ["USER"]
+    },
+    {
+      "id": 3,
+      "name": "Martial",
+      "email": "martial@fms.fr",
+      "password": "1234",
+      "status": ["USER"]
+    },
+    {
+      "id": 4,
+      "name": "Admin",
+      "email": "admin@fms.fr",
+      "password": "admin",
+      "status": ["ADMIN"]
+    },
+    {
+      "id": 5,
+      "name": "Sarah",
+      "email": "sarah@gmail.com",
+      "password": "1234",
+      "status": ["USER"]
+    },
+    {
+      "id": 6,
+      "name": "Dave",
+      "email": "dave@fms.fr",
+      "password": "dev",
+      "status": ["ADMIN", "USER"]
+    },
+    {
+      "id": "55e7",
+      "name": "amandine",
+      "email": "a@gl.fr",
+      "password": "Coucou123",
+      "status": ["USER"]
+    }
   ]
 }
