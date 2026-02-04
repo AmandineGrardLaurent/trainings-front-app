@@ -32,6 +32,16 @@
           Profil
         </a>
       </li>
+      @if (isAdmin()) {
+        <li>
+          <a
+            routerLink="/admin"
+            class="px-4 py-2 rounded-2xl bg-pink-400 text-white font-medium hover:bg-pink-500 transition"
+          >
+            Admin
+          </a>
+        </li>
+      }
     }
 
     @if (!isLoggedIn()) {
