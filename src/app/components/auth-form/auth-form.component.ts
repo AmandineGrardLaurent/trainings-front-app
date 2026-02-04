@@ -5,6 +5,12 @@ import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 
+/**
+ * Component responsible for handling user authentication (login).
+ *
+ * This component manages the login form, verifies user existence
+ * and credentials, and redirects the user based on the result.
+ */
 @Component({
   selector: 'app-auth-form.component',
   imports: [ReactiveFormsModule, RouterLink],
@@ -12,7 +18,16 @@ import { RouterLink } from '@angular/router';
   standalone: true,
 })
 export class AuthFormComponent {
+  /**
+   * Reactive form used for user authentication.
+   * Contains email and password fields.
+   */
   authForm: FormGroup;
+
+  /**
+   * Constructor initializes the authentication form
+   * and injects required services.
+   */
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -25,6 +40,15 @@ export class AuthFormComponent {
     });
   }
 
+  /**
+   * Handles the user login process.
+   *
+   * - Checks if form values are present
+   * - Verifies if the user exists
+   * - Validates the password
+   * - Stores the authenticated user
+   * - Redirects to the profile page on success
+   */
   loginUser() {
     const { email, password } = this.authForm.value;
     if (!email || !password) return;
