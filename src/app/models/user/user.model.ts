@@ -2,6 +2,7 @@
  * User model representing a user in the application.
  */
 export class UserModel {
+  id: number;
   name: string;
   email: string;
   password: string;
@@ -13,7 +14,8 @@ export class UserModel {
    * @param email - The email address of the user.
    * @param password - The password of the user.
    */
-  constructor(name: string, email: string, password: string, status: string[]) {
+  constructor(id: number, name: string, email: string, password: string, status: string[]) {
+    this.id = id;
     this.name = name;
     this.email = email;
     this.password = password;
