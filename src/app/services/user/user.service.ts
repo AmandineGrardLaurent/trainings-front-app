@@ -44,7 +44,9 @@ export class UserService {
     return this.user !== null;
   }
 
-  isAdmin() {}
+  isAdmin(): boolean {
+    return this.user?.status.includes('ADMIN') ?? false;
+  }
 
   verifyUserExists(email: string) {
     return this.apiUserService.getUserByEmail(email).pipe(map((users) => users.length > 0));
