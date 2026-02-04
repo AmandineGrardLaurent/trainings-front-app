@@ -1,3 +1,4 @@
+import { ApiUserService } from './../../services/api/api-user.service';
 import { UserService } from './../../services/user/user.service';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +17,7 @@ export class AuthFormComponent {
     private fb: FormBuilder,
     private router: Router,
     private userService: UserService,
+    private apiUserService: ApiUserService,
   ) {
     this.authForm = this.fb.group({
       email: [''],
@@ -38,7 +40,12 @@ export class AuthFormComponent {
         if (!valid) {
           alert('Mot de passe incorrect');
         } else {
-          this.router.navigateByUrl('/profile');
+          this.apiUserService.getUserByEmail(email).subscribe((users) => {
+            const user = users[0];
+            this.userService.setUser(user);
+            alert('Connexion réussie !');
+            this.router.navigateByUrl('/profile');
+          });
         }
       });
     });
