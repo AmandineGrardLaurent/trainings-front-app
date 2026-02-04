@@ -17,4 +17,8 @@ export class App {
   isLoggedIn = () => {
     return this.userService.getUser();
   };
+
+  isAdmin = () => {
+    return this.userService.isAdmin();
+  };
 }
