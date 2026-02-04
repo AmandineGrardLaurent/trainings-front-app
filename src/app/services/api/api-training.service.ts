@@ -16,4 +16,8 @@ export class ApiTrainingService {
   public getTrainingById(id: number) {
     return this.http.get<TrainingModel>(`${environment.apiUrl}/trainings/${id}`);
   }
+
+  public deleteTraining(id: number) {
+    return this.http.delete(`${environment.apiUrl}/trainings/${id}`);
+  }
 }
