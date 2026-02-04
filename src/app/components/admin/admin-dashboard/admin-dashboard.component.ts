@@ -57,4 +57,15 @@ export class AdminDashboardComponent implements OnInit {
       error: (err) => console.error('Error deleting user:', err.message),
     });
   }
+
+  onDeleteTraining(id: number) {
+    this.trainings = this.trainings.filter((training) => training.id !== id);
+    console.log(this.trainings);
+    this.apiTrainingService.deleteTraining(id).subscribe({
+      next: () => {
+        alert('Formation supprimée avec succès');
+      },
+      error: (err) => console.error('Error deleting training:', err.message),
+    });
+  }
 }
