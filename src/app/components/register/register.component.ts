@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiUserService } from '../../services/api/api-user.service';
 import { registerFormSchema } from '../../validators/register-form.schema';
+import { PasswordService } from '../../services/password/password.service';
 
 @Component({
   selector: 'app-register.component',
@@ -29,6 +30,7 @@ export class RegisterComponent {
     private userService: UserService,
     private router: Router,
     private apiUserService: ApiUserService,
+    private passwordService: PasswordService,
   ) {
     this.registerForm = this.fb.group(registerFormSchema);
   }
@@ -37,13 +39,17 @@ export class RegisterComponent {
    */
   addUser() {
     if (this.registerForm.valid) {
-      this.apiUserService.postUser(this.registerForm.value).subscribe((user) => {
+      // Hash the password before sending
+      const formValue = { ...this.registerForm.value };
+      formValue.password = this.passwordService.hashPassword(formValue.password);
+
+      this.apiUserService.postUser(formValue).subscribe((user) => {
         this.userService.setUser(user);
         alert('Inscription réussie ! Veuillez vous connecter.');
-      });
 
-      // Navigate to the auth page after successful registration
-      this.router.navigateByUrl('/auth');
+        // Navigate to the auth page after successful registration
+        this.router.navigateByUrl('/auth');
+      });
     }
   }
 }
