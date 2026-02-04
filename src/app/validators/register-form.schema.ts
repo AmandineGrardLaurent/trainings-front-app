@@ -29,6 +29,7 @@ export const registerFormSchema = {
    * Password field
    * - Required
    * - Minimum length: 6 characters
+   * - Must contain at least one uppercase letter and one digit
    */
   password: [
     '',
