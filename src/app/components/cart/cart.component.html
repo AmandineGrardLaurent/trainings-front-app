@@ -58,6 +58,7 @@
       @if (isLoggedIn()) {
         <button
           class="w-auto p-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition font-medium"
+          (click)="placeOrder()"
         >
           Commander
         </button>
