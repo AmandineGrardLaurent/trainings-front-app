@@ -1,3 +1,4 @@
+import { PasswordService } from './../password/password.service';
 import { Injectable } from '@angular/core';
 import { UserModel } from '../../models/user/user.model';
 import { ApiUserService } from '../api/api-user.service';
@@ -17,7 +18,10 @@ export class UserService {
   // Stores the currently loggedIn user, null if no user is logged in
   private user: UserModel | null = null;
 
-  constructor(private apiUserService: ApiUserService) {
+  constructor(
+    private apiUserService: ApiUserService,
+    private passwordService: PasswordService,
+  ) {
     // const storedUser = localStorage.getItem('userLoggedIn');
     // if (storedUser) {
     //   this.user = JSON.parse(storedUser);
@@ -73,6 +77,11 @@ export class UserService {
   verifyUserPassword(email: string, password: string) {
     return this.apiUserService
       .getUserByEmail(email)
-      .pipe(map((users) => users.length > 0 && users[0].password === password));
+      .pipe(
+        map(
+          (users) =>
+            users.length > 0 && this.passwordService.comparePassword(password, users[0].password),
+        ),
+      );
   }
 }
