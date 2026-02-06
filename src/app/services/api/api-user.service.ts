@@ -38,7 +38,6 @@ export class ApiUserService {
   // Creates a new user in the database
   // The user is automatically assigned the USER status
   public postUser(user: UserModel) {
-    console.log('API - Creating user:', user);
     const userNotAdmin = { ...user, status: ['USER'] };
     return this.http.post<UserModel>(`${environment.apiUrl}/users`, userNotAdmin);
   }
