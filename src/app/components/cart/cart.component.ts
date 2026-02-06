@@ -1,3 +1,4 @@
+import { ApiOrderService } from './../../services/api/api-order.service';
 import { UserService } from './../../services/user/user.service';
 import { Component, OnInit, effect } from '@angular/core';
 import { TrainingModel } from '../../models/training/training.model';
@@ -19,6 +20,7 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private userService: UserService,
+    private apiOrderService: ApiOrderService,
   ) {
     // Create an effect to automatically update listCartTrainings and totalPrice whenever the signal changes
     effect(() => {
@@ -50,4 +52,20 @@ export class CartComponent implements OnInit {
   isLoggedIn = () => {
     return this.userService.getUser();
   };
+
+  placeOrder() {
+    const user = this.userService.getUser()!;
+
+    if (!this.userService.isLoggedIn()) {
+      alert('Vous devez être connecté');
+      return;
+    }
+
+    const order = this.cartService.addOrder(user);
+
+    this.apiOrderService.postOrder(order).subscribe(() => {
+      alert('Commande faite avec succes');
+    });
+    this.cartService.clearCart();
+  }
 }
