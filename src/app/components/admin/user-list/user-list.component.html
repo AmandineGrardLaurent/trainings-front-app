@@ -1,31 +1,32 @@
-<div class="p-6 my-6 max-w-md mx-auto bg-white rounded-2xl shadow-lg border border-gray-200">
+<div class="p-6 my-6 mx-auto bg-white rounded-2xl shadow-lg border border-gray-200 max-w-5xl">
   <h2 class="text-3xl font-bold mb-4 text-pink-500 text-center">Gestion des Utilisateurs</h2>
-  @if (users) {
-    @for (user of users; track user.id) {
-      <div class="p-6 my-6 max-w-md mx-auto bg-white rounded-2xl shadow-lg border border-gray-200">
-        <div class="space-y-2">
-          <p class="flex justify-between bg-gray-50 p-2 rounded">
-            <span class="font-semibold text-gray-600">Nom:</span>
-            <span class="text-gray-800">{{ user.name }}</span>
-          </p>
-          <p class="flex justify-between bg-gray-50 p-2 rounded">
-            <span class="font-semibold text-gray-600">Email:</span>
-            <span class="text-gray-800">{{ user.email }}</span>
-          </p>
-          <p class="flex justify-between bg-gray-50 p-2 rounded">
-            <span class="font-semibold text-gray-600"> Statut(s):</span>
+  <div class="flex flex-wrap justify-center gap-4">
+    @if (users) {
+      @for (user of users; track user.id) {
+        <div class="flex flex-col w-64 p-6 bg-white rounded-2xl shadow-lg border border-gray-200">
+          <div class="flex flex-col space-y-2 mb-3">
+            <p class="flex justify-between bg-gray-50 p-2 rounded">
+              <span class="font-semibold text-gray-600">Nom:</span>
+              <span class="text-gray-800">{{ user.name }}</span>
+            </p>
+            <p class="flex justify-between bg-gray-50 p-2 rounded">
+              <span class="font-semibold text-gray-600">Email:</span>
+              <span class="text-gray-800">{{ user.email }}</span>
+            </p>
+            <p class="flex justify-between bg-gray-50 p-2 rounded">
+              <span class="font-semibold text-gray-600">Statut(s):</span>
+              <span class="text-gray-800">{{ user.status }}</span>
+            </p>
+          </div>
 
-            <span class="text-gray-800">{{ user.status }}</span>
-          </p>
+          <button
+            (click)="deleteUser.emit(user.id)"
+            class="text-pink-400 hover:text-pink-500 font-medium"
+          >
+            Supprimer
+          </button>
         </div>
-
-        <button
-          (click)="deleteUser.emit(user.id)"
-          class="text-pink-400 hover:text-pink-500 font-medium m-3"
-        >
-          Supprimer
-        </button>
-      </div>
+      }
     }
-  }
+  </div>
 </div>
