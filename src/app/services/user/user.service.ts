@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { UserModel } from '../../models/user/user.model';
 import { ApiUserService } from '../api/api-user.service';
 import { map } from 'rxjs';
-import { CartService } from '../cart/cart.service';
 
 /**
  * UserService
@@ -38,6 +37,10 @@ export class UserService {
   // Returns the currently logged-in user
   getUser() {
     return this.user;
+  }
+
+  getUserId() {
+    return this.user?.id;
   }
 
   // Sets the current user in the service state
