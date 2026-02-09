@@ -11,7 +11,19 @@ export class ApiOrderService {
   constructor(private http: HttpClient) {}
 
   // Creates a new order in the database
-  public postOrder(order: OrderModel) {
+  public postOrder(order: Partial<OrderModel>) {
     return this.http.post<OrderModel>(`${environment.apiUrl}/orders`, order);
+  }
+
+  public getOrder(id: number) {
+    return this.http.get<OrderModel>(`${environment.apiUrl}/orders/${id}`);
+  }
+
+  public getOrders() {
+    return this.http.get<OrderModel[]>(`${environment.apiUrl}/orders`);
+  }
+
+  public getOrdersByUser(userId: number) {
+    return this.http.get<OrderModel[]>(`${environment.apiUrl}/orders?user.id=${userId}`);
   }
 }
