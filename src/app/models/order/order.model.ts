@@ -5,18 +5,13 @@ import { UserModel } from '../user/user.model';
  * Model representing an order.
  */
 export class OrderModel {
-  // orderId: number;
+  id: number;
   user: UserModel;
   trainingsList: TrainingModel[];
   totalPrice: number;
 
-  constructor(
-    // orderId: number,
-    user: UserModel,
-    trainingsList: TrainingModel[],
-    totalPrice: number,
-  ) {
-    // this.orderId = orderId;
+  constructor(id: number, user: UserModel, trainingsList: TrainingModel[], totalPrice: number) {
+    this.id = id;
     this.user = user;
     this.trainingsList = trainingsList;
     this.totalPrice = totalPrice;
