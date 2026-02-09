@@ -1,0 +1,38 @@
+@if (listOrders) {
+  <div class="p-6 max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4 text-pink-500 text-center">Vos commandes</h2>
+
+    @for (order of listOrders; track order.totalPrice) {
+      <h3 class="text-lg font-semibold my-2">
+        Commande {{ order.id }} - Total: {{ order.totalPrice | currency: 'EUR' }}
+      </h3>
+
+      <table class="w-full border-collapse mb-10">
+        <thead>
+          <tr class="bg-gray-200 text-gray-700">
+            <th class="border px-4 py-2 text-left">ID</th>
+            <th class="border px-4 py-2 text-left">Nom</th>
+            <th class="border px-4 py-2 text-left">Description</th>
+            <th class="border px-4 py-2 text-left">Prix</th>
+            <th class="border px-4 py-2 text-left">Quantité</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (training of order.trainingsList; track training.id) {
+            <tr class="even:bg-gray-50 hover:bg-pink-50 transition">
+              <td class="border px-4 py-2">{{ training.id }}</td>
+              <td class="border px-4 py-2 font-semibold text-gray-800">{{ training.name }}</td>
+              <td class="border px-4 py-2 text-gray-700">{{ training.description }}</td>
+              <td class="border px-4 py-2 font-medium text-gray-900">
+                {{ training.price | currency: 'EUR' }}
+              </td>
+              <td class="border px-4 py-2">
+                {{ training.quantity }}
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+}
