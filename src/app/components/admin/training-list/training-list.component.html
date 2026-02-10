@@ -14,28 +14,59 @@
       </thead>
       <tbody>
         @for (training of trainings; track training.id) {
-          <tr class="even:bg-gray-50 hover:bg-pink-50 transition">
+          <tr class="even:bg-gray-50">
             <td class="border px-4 py-2">{{ training.id }}</td>
-            <td class="border px-4 py-2 font-semibold text-gray-800">{{ training.name }}</td>
-            <td class="border px-4 py-2 text-gray-700">{{ training.description }}</td>
+
+            <td class="border px-4 py-2 font-semibold text-gray-800">
+              @if (editTrainingId === training.id) {
+                <form [formGroup]="editTrainingForm">
+                  <input class="w-full border rounded px-2 py-1" formControlName="name" />
+                </form>
+              } @else {
+                {{ training.name }}
+              }
+            </td>
+            <td class="border px-4 py-2 text-gray-700">
+              @if (editTrainingId === training.id) {
+                <form [formGroup]="editTrainingForm">
+                  <input class="w-full border rounded px-2 py-1" formControlName="description" />
+                </form>
+              } @else {
+                {{ training.description }}
+              }
+            </td>
+
             <td class="border px-4 py-2 font-medium text-gray-900">
-              {{ training.price | currency: 'EUR' }}
+              @if (editTrainingId === training.id) {
+                <form [formGroup]="editTrainingForm">
+                  <input class="w-full border rounded px-2 py-1" formControlName="price" />
+                </form>
+              } @else {
+                {{ training.price | currency: 'EUR' }}
+              }
             </td>
 
             <td class="border px-4 py-2">
-              <div class="flex flex-col gap-2 items-center justify-center h-full">
-                <button
-                  (click)="deleteTraining.emit(training.id)"
-                  class="px-4 py-2 w-full bg-pink-400 text-white rounded-xl hover:bg-pink-500 transition font-medium whitespace-nowrap"
-                >
-                  Supprimer
-                </button>
-                <!-- <button
-                  class="px-4 py-2 w-full bg-pink-400 text-white rounded-xl hover:bg-pink-500 transition font-medium whitespace-nowrap"
-                >
-                  Modifier
-                </button> -->
-              </div>
+              @if (editTrainingId === training.id) {
+                <div class="flex gap-2">
+                  <button (click)="saveEdit(training.id)" class="text-green-600 font-medium">
+                    Valider
+                  </button>
+                  <button (click)="cancelEdit()" class="text-red-500 font-medium">Annuler</button>
+                </div>
+              } @else {
+                <div class="flex flex-col gap-2">
+                  <button
+                    (click)="deleteTraining.emit(training.id)"
+                    class="text-pink-400 hover:underline"
+                  >
+                    Supprimer
+                  </button>
+                  <button (click)="startEdit(training)" class="text-purple-600 hover:underline">
+                    Modifier
+                  </button>
+                </div>
+              }
             </td>
           </tr>
         }

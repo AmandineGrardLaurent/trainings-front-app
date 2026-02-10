@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { TrainingModel } from '../../../models/training/training.model';
 import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 /**
  * Component responsible for displaying a list of trainings.
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
  */
 @Component({
   selector: 'app-training-list',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   standalone: true,
   templateUrl: './training-list.component.html',
 })
@@ -26,4 +27,44 @@ export class TrainingListComponent {
    * Emits the ID of the training.
    */
   @Output() deleteTraining = new EventEmitter<number>();
+
+  @Output() updateTraining = new EventEmitter<{
+    id: number;
+    data: Partial<TrainingModel>;
+  }>();
+
+  editTrainingId: number | null = null;
+  editTrainingForm!: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.editTrainingForm = this.fb.group({
+      name: [''],
+      description: [''],
+      price: [0],
+    });
+  }
+
+  startEdit(training: TrainingModel) {
+    this.editTrainingId = training.id;
+
+    this.editTrainingForm.patchValue({
+      name: training.name,
+      description: training.description,
+      price: training.price,
+    });
+  }
+
+  saveEdit(trainingId: number) {
+    if (this.editTrainingForm.invalid) return;
+
+    this.updateTraining.emit({
+      id: trainingId,
+      data: this.editTrainingForm.value,
+    });
+    this.editTrainingId = null;
+  }
+
+  cancelEdit() {
+    this.editTrainingId = null;
+  }
 }
