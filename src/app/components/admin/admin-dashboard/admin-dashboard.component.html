@@ -3,6 +3,7 @@
     <app-training-list
       [trainings]="trainings"
       (deleteTraining)="onDeleteTraining($event)"
+      (updateTraining)="onUpdateTraining($event)"
     ></app-training-list>
     @if (users.length > 0) {
       <app-user-list [users]="users" (deleteUser)="onDeleteUser($event)"></app-user-list>
