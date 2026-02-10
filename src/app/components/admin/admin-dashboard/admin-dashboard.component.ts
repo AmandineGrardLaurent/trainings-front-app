@@ -6,13 +6,14 @@ import { UserListComponent } from '../user-list/user-list.component';
 import { TrainingListComponent } from '../training-list/training-list.component';
 import { TrainingModel } from '../../../models/training/training.model';
 import { TrainingFormComponent } from '../training-form/training-form.component';
+import { CommonModule } from '@angular/common';
 
 /**
  * Admin dashboard component.
  */
 @Component({
   selector: 'app-admin-dashboard.component',
-  imports: [UserListComponent, TrainingListComponent, TrainingFormComponent],
+  imports: [UserListComponent, TrainingListComponent, TrainingFormComponent, CommonModule],
   standalone: true,
   templateUrl: './admin-dashboard.component.html',
 })
@@ -61,7 +62,7 @@ export class AdminDashboardComponent implements OnInit {
         this.trainings = trainings;
         this.cdr.detectChanges();
       },
-      error: (err) => console.error('Error fetching users:', err.message),
+      error: (err) => console.error('Error fetching trainings:', err.message),
     });
   }
 
@@ -87,12 +88,25 @@ export class AdminDashboardComponent implements OnInit {
    */
   onDeleteTraining(id: number) {
     this.trainings = this.trainings.filter((training) => training.id !== id);
-    console.log(this.trainings);
     this.apiTrainingService.deleteTraining(id).subscribe({
       next: () => {
         alert('Formation supprimée avec succès');
       },
       error: (err) => console.error('Error deleting training:', err.message),
+    });
+  }
+
+  onUpdateTraining(event: { id: number; data: Partial<TrainingModel> }) {
+    this.apiTrainingService.updateTraining(event.id, event.data).subscribe({
+      next: (updated) => {
+        const index = this.trainings.findIndex((training) => training.id === event.id);
+        if (index !== -1) {
+          this.trainings[index] = { ...this.trainings[index], ...updated };
+        }
+
+        this.cdr.detectChanges();
+      },
+      error: (err) => console.error(err),
     });
   }
 }
