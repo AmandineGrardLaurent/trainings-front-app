@@ -30,7 +30,6 @@ export class UserService {
 
   // Registers a user locally (does not call backend)
   register(user: UserModel) {
-    console.log('Registering user:', user);
     this.user = user;
   }
 
@@ -46,6 +45,7 @@ export class UserService {
   // Sets the current user in the service state
   // Optionally, this could persist in localStorage
   setUser(user: UserModel) {
+    this.apiUserService.postUser(user);
     this.user = user;
     // localStorage.setItem('userLoggedIn', JSON.stringify(user));
   }
