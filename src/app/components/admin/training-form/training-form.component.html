@@ -10,12 +10,8 @@
         placeholder="Node.js - Express"
         class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
         formControlName="name"
+        required
       />
-      <!-- @if (registerForm.get('name')?.invalid && registerForm.get('name')?.touched) {
-        <p class="text-red-500 text-sm mt-1">
-          Veuillez entrer un nom valide (minimum 3 caractères).
-        </p>
-      } -->
     </div>
 
     <!-- Description -->
@@ -26,10 +22,8 @@
         placeholder="Création d’API backend avec Node.js et Express (3 jours)"
         class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
         formControlName="description"
+        required
       />
-      <!-- @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
-        <p class="text-red-500 text-sm mt-1">Veuillez entrer une adresse email valide.</p>
-      } -->
     </div>
 
     <!-- Price -->
@@ -37,22 +31,17 @@
       <label class="block text-sm font-medium text-gray-600 mb-1"> Prix (euros) </label>
       <input
         type="number"
-        placeholder="1550€"
         class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
         formControlName="price"
+        placeholder="1300€"
+        required
       />
-      <!-- @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
-        <p class="text-red-500 text-sm mt-1">
-          Veuillez entrer un mot de passe valide (minimum 6 caractères, avec au moins une majuscule
-          et un chiffre).
-        </p>
-      } -->
     </div>
 
     <!-- Submit -->
     <button
       type="submit"
-      class="w-full mt-4 py-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition"
+      class="p-4 py-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition"
       [disabled]="trainingForm.invalid"
     >
       Valider
