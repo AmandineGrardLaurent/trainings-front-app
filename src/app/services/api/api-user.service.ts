@@ -26,7 +26,7 @@ export class ApiUserService {
 
   // Fetches a single user by its unique identifier
   public getUserById(id: number) {
-    return this.http.get<UserModel[]>(`${environment.apiUrl}/users/${id}`);
+    return this.http.get<UserModel>(`${environment.apiUrl}/users/${id}`);
   }
 
   // Fetches users matching a given email address
@@ -38,7 +38,11 @@ export class ApiUserService {
   // Creates a new user in the database
   // The user is automatically assigned the USER status
   public postUser(user: UserModel) {
-    const userNotAdmin = { ...user, status: ['USER'] };
+    const userNotAdmin = {
+      ...user,
+      status: ['USER'],
+      id: (Math.floor(Math.random() * (1000000 - 1 + 1)) + 1).toString(),
+    };
     return this.http.post<UserModel>(`${environment.apiUrl}/users`, userNotAdmin);
   }
 
@@ -51,6 +55,7 @@ export class ApiUserService {
 
   // Deletes a user by its ID
   public deleteUser(id: number) {
+    console.log(id);
     return this.http.delete(`${environment.apiUrl}/users/${id}`);
   }
 }
