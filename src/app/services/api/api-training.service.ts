@@ -41,4 +41,8 @@ export class ApiTrainingService {
     };
     return this.http.post<TrainingModel>(`${environment.apiUrl}/trainings`, training);
   }
+
+  public updateTraining(id: number, trainingForm: Partial<TrainingModel>) {
+    return this.http.patch<TrainingModel>(`${environment.apiUrl}/trainings/${id}`, trainingForm);
+  }
 }
