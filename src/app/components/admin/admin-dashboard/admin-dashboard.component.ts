@@ -5,13 +5,14 @@ import { UserModel } from '../../../models/user/user.model';
 import { UserListComponent } from '../user-list/user-list.component';
 import { TrainingListComponent } from '../training-list/training-list.component';
 import { TrainingModel } from '../../../models/training/training.model';
+import { TrainingFormComponent } from '../training-form/training-form.component';
 
 /**
  * Admin dashboard component.
  */
 @Component({
   selector: 'app-admin-dashboard.component',
-  imports: [UserListComponent, TrainingListComponent],
+  imports: [UserListComponent, TrainingListComponent, TrainingFormComponent],
   standalone: true,
   templateUrl: './admin-dashboard.component.html',
 })

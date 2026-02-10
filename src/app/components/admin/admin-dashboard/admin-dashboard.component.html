@@ -7,5 +7,6 @@
     @if (users.length > 0) {
       <app-user-list [users]="users" (deleteUser)="onDeleteUser($event)"></app-user-list>
     }
+    <app-training-form-component (trainingAdded)="getTrainings()"></app-training-form-component>
   </div>
 </main>
