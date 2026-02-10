@@ -1,59 +1,86 @@
-# TrainingsFrontApp
+# Gestion des Formations - Dashboard Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+## Description
 
-## Development server
+Cette application web permet la gestion de formations et d'utilisateurs avec Angular.  
+Elle offre différentes fonctionnalités selon le type d'utilisateur : non connecté, connecté ou administrateur.  
+Le backend est simulé via une API REST sur un fichier JSON.
 
-To start a local development server, run:
+---
+
+## Fonctionnalités
+
+### Pour un utilisateur non connecté
+
+- Créer un compte
+- Ajouter des formations dans un panier
+
+### Pour un utilisateur connecté
+
+- Finaliser son panier et passer une commande
+- Afficher ses commandes
+- Se déconnecter
+
+### Pour l'administrateur
+
+- Afficher toutes les formations
+- Ajouter une nouvelle formation
+- Modifier les informations d'une formation
+- Supprimer une formation
+- Afficher la liste des utilisateurs
+- Supprimer des utilisateurs
+
+---
+
+## Bonnes pratiques mises en place
+
+- **Authentification et guards** : Les routes et fonctionnalités sont protégées selon le rôle de l'utilisateur (USER / ADMIN).
+- **Protection du mot de passe** : Le mot de passe est crypté lors de la création d'un nouvel utilisateur.
+- **Formulaires réactifs** : Tous les formulaires utilisent `ReactiveFormsModule` avec vérification des champs (`Validators`) pour sécuriser la saisie.
+- **Gestion du panier** : Le service `CartService` maintient l'état du panier et les signaux Angular permettent une mise à jour automatique de l'affichage.
+- **CRUD avec l'API** : Les services `ApiUserService` et `ApiTrainingService` communiquent avec le backend JSON pour récupérer, ajouter, modifier et supprimer des données.
+- **Mises à jour en temps réel** : Les modifications de formations ou de commandes sont reflétées immédiatement dans l'interface grâce à la détection de changements (`ChangeDetectorRef`) et aux signaux Angular.
+
+---
+
+## Installation
+
+1. **Cloner le projet**
+
+```bash
+git clone https://github.com/AmandineGrardLaurent/trainings-front-app.git
+cd trainings-front-app
+git pull origin angular_avanced
+```
+
+2. **Installer les dépendances**
+
+```bash
+npm i
+```
+
+3. **Lancer le back-end JSON**
+
+```bash
+npx json-server --watch db.json --port 3000
+```
+
+3. **Lancer l'application Angular**
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+L'application sera disponible sur http://localhost:4200
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Utilisation
 
-```bash
-ng generate component component-name
-```
+- Créez un compte ou connectez-vous si vous êtes déjà inscrit.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Parcourez les formations et ajoutez-les au panier.
 
-```bash
-ng generate --help
-```
+- Finalisez le panier pour créer une commande.
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- En tant qu'administrateur, accédez au dashboard pour gérer les formations et les utilisateurs (email: test@gmail.com, mdp: Coucou1234\*)
