@@ -1,0 +1,61 @@
+<div class="p-6 my-6 mx-auto bg-white rounded-2xl shadow-lg border border-gray-200 max-w-5xl">
+  <h2 class="text-3xl font-bold mb-4 text-pink-500 text-center">Ajouter une nouvelle formation</h2>
+
+  <form class="space-y-4" [formGroup]="trainingForm" (submit)="addTraining()">
+    <!-- Name -->
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-1"> Intitulé </label>
+      <input
+        type="text"
+        placeholder="Node.js - Express"
+        class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
+        formControlName="name"
+      />
+      <!-- @if (registerForm.get('name')?.invalid && registerForm.get('name')?.touched) {
+        <p class="text-red-500 text-sm mt-1">
+          Veuillez entrer un nom valide (minimum 3 caractères).
+        </p>
+      } -->
+    </div>
+
+    <!-- Description -->
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-1"> Description </label>
+      <input
+        type="text"
+        placeholder="Création d’API backend avec Node.js et Express (3 jours)"
+        class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
+        formControlName="description"
+      />
+      <!-- @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+        <p class="text-red-500 text-sm mt-1">Veuillez entrer une adresse email valide.</p>
+      } -->
+    </div>
+
+    <!-- Price -->
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-1"> Prix (euros) </label>
+      <input
+        type="number"
+        placeholder="1550€"
+        class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
+        formControlName="price"
+      />
+      <!-- @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+        <p class="text-red-500 text-sm mt-1">
+          Veuillez entrer un mot de passe valide (minimum 6 caractères, avec au moins une majuscule
+          et un chiffre).
+        </p>
+      } -->
+    </div>
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      class="w-full mt-4 py-2 bg-pink-400 text-white rounded-2xl hover:bg-pink-500 transition"
+      [disabled]="trainingForm.invalid"
+    >
+      Valider
+    </button>
+  </form>
+</div>
