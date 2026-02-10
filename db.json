@@ -1,0 +1,356 @@
+{
+  "trainings": [
+    {
+      "id": "2",
+      "name": "DotNet ++",
+      "description": "Formation DotNet (3 jours)",
+      "price": "1200",
+      "quantity": 1
+    },
+    {
+      "id": "3",
+      "name": "Python",
+      "description": "Formation Python (5 jours)",
+      "price": 1500,
+      "quantity": 1
+    },
+    {
+      "id": "4",
+      "name": "React",
+      "description": "Formation React (2 jours)",
+      "price": 800,
+      "quantity": 1
+    },
+    {
+      "id": "5",
+      "name": "Angular",
+      "description": "Formation Angular avancé avec Signals et Standalone Components (4 jours)",
+      "price": 1400,
+      "quantity": 1
+    },
+    {
+      "id": "6",
+      "name": "Spring Boot",
+      "description": "Développement d’API REST avec Spring Boot (5 jours)",
+      "price": 1600,
+      "quantity": 1
+    },
+    {
+      "id": "7",
+      "name": "Node.js",
+      "description": "Création d’API backend avec Node.js et Express (3 jours)",
+      "price": 1100,
+      "quantity": 1
+    },
+    {
+      "id": "8",
+      "name": "Docker",
+      "description": "Containerisation d’applications avec Docker (2 jours)",
+      "price": 900,
+      "quantity": 1
+    },
+    {
+      "id": "10",
+      "name": "TypeScript",
+      "description": "Maîtriser TypeScript pour les projets frontend et backend (3 jours)",
+      "price": 1000,
+      "quantity": 1
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "claudine",
+      "email": "test@gmail.com",
+      "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+      "status": [
+        "ADMIN",
+        "USER"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Hugo",
+      "email": "hugo@gmail.com",
+      "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+      "status": [
+        "USER"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Martial",
+      "email": "martial@fms.fr",
+      "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+      "status": [
+        "USER"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Sarah",
+      "email": "sarah@gmail.com",
+      "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+      "status": [
+        "USER"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Dave",
+      "email": "dave@fms.fr",
+      "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+      "status": [
+        "ADMIN",
+        "USER"
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "180f",
+      "user": {
+        "id": "1",
+        "name": "claudine",
+        "email": "test@gmail.com",
+        "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+        "status": [
+          "ADMIN",
+          "USER"
+        ]
+      },
+      "trainingsList": [
+        {
+          "id": "1",
+          "name": "Java",
+          "description": "Formation Java SE 8 (5 jours)",
+          "price": 1500,
+          "quantity": 2
+        },
+        {
+          "id": "4",
+          "name": "React",
+          "description": "Formation React (2 jours)",
+          "price": 800,
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 3800
+    },
+    {
+      "id": "cd00",
+      "user": {
+        "id": "1",
+        "name": "claudine",
+        "email": "test@gmail.com",
+        "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+        "status": [
+          "ADMIN",
+          "USER"
+        ]
+      },
+      "trainingsList": [
+        {
+          "id": "5",
+          "name": "Angular",
+          "description": "Formation Angular avancé avec Signals et Standalone Components (4 jours)",
+          "price": 1400,
+          "quantity": 2
+        },
+        {
+          "id": "8",
+          "name": "Docker",
+          "description": "Containerisation d’applications avec Docker (2 jours)",
+          "price": 900,
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 3700
+    },
+    {
+      "id": "f430",
+      "user": {
+        "id": "1",
+        "name": "claudine",
+        "email": "test@gmail.com",
+        "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+        "status": [
+          "ADMIN",
+          "USER"
+        ]
+      },
+      "trainingsList": [
+        {
+          "id": "3",
+          "name": "Python",
+          "description": "Formation Python (5 jours)",
+          "price": 1500,
+          "quantity": 3
+        },
+        {
+          "id": "9",
+          "name": "Git & GitHub",
+          "description": "Gestion de versions et collaboration avec Git et GitHub (2 jours)",
+          "price": 700,
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 6600
+    },
+    {
+      "id": "80d1",
+      "user": {
+        "id": "1",
+        "name": "claudine",
+        "email": "test@gmail.com",
+        "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+        "status": [
+          "ADMIN",
+          "USER"
+        ]
+      },
+      "trainingsList": [
+        {
+          "id": "2",
+          "name": "DotNet",
+          "description": "Formation DotNet (3 jours)",
+          "price": 1000,
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1000
+    },
+    {
+      "id": "d780",
+      "user": {
+        "id": "1",
+        "name": "claudine",
+        "email": "test@gmail.com",
+        "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+        "status": [
+          "ADMIN",
+          "USER"
+        ]
+      },
+      "trainingsList": [
+        {
+          "id": "1",
+          "name": "Java",
+          "description": "Formation Java SE 8 (5 jours)",
+          "price": 1500,
+          "quantity": 1
+        },
+        {
+          "id": "10",
+          "name": "TypeScript",
+          "description": "Maîtriser TypeScript pour les projets frontend et backend (3 jours)",
+          "price": 1000,
+          "quantity": 4
+        }
+      ],
+      "totalPrice": 5500
+    },
+    {
+      "id": "0e6c",
+      "user": {
+        "id": "782717",
+        "name": "test",
+        "email": "test2@gmail.com",
+        "password": "$2b$10$3GK1mjXDLMheUd5RVuw.nOprmSsbBaUfRIAwPju567r61bYQnqUMW",
+        "status": [
+          "USER"
+        ]
+      },
+      "trainingsList": [
+        {
+          "id": "1",
+          "name": "Java",
+          "description": "Formation Java SE 8 (5 jours)",
+          "price": 1500,
+          "quantity": 3
+        },
+        {
+          "id": "6",
+          "name": "Spring Boot",
+          "description": "Développement d’API REST avec Spring Boot (5 jours)",
+          "price": 1600,
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 9300
+    },
+    {
+      "id": "b71d",
+      "user": {
+        "id": "449042",
+        "name": "rehg",
+        "email": "rere@jg",
+        "password": "$2b$10$35RR27p4SZoHg.PGm/YkdulTjI3G3kVQfCVeYCtPV0mtkSS4hKA.q",
+        "status": [
+          "USER"
+        ]
+      },
+      "trainingsList": [
+        {
+          "id": "1",
+          "name": "Java",
+          "description": "Formation Java SE 8 (5 jours)",
+          "price": 1500,
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1500
+    },
+    {
+      "id": "28d0",
+      "user": {
+        "id": "2",
+        "name": "Hugo",
+        "email": "hugo@gmail.com",
+        "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+        "status": [
+          "USER"
+        ]
+      },
+      "trainingsList": [
+        {
+          "id": "2",
+          "name": "DotNet ++",
+          "description": "Formation DotNet (3 jours)",
+          "price": "1200",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1200
+    },
+    {
+      "id": "d462",
+      "user": {
+        "id": "2",
+        "name": "Hugo",
+        "email": "hugo@gmail.com",
+        "password": "$2b$10$WKduD7gcUDmr3kFbNUH0Wucv2YKm7MC6oe5ITYmN8CgT1M8IXM.9K",
+        "status": [
+          "USER"
+        ]
+      },
+      "trainingsList": [
+        {
+          "id": "5",
+          "name": "Angular",
+          "description": "Formation Angular avancé avec Signals et Standalone Components (4 jours)",
+          "price": 1400,
+          "quantity": 4
+        },
+        {
+          "id": "8",
+          "name": "Docker",
+          "description": "Containerisation d’applications avec Docker (2 jours)",
+          "price": 900,
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 6500
+    }
+  ]
+}

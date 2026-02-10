@@ -2,6 +2,9 @@ import { UserService } from './../../services/user/user.service';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiUserService } from '../../services/api/api-user.service';
+import { registerFormSchema } from '../../validators/register-form.schema';
+import { PasswordService } from '../../services/password/password.service';
 
 @Component({
   selector: 'app-register.component',
@@ -26,24 +29,27 @@ export class RegisterComponent {
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router,
+    private apiUserService: ApiUserService,
+    private passwordService: PasswordService,
   ) {
-    this.registerForm = this.fb.group({
-      name: [''],
-      email: [''],
-      password: [''],
-    });
+    this.registerForm = this.fb.group(registerFormSchema);
   }
   /**
    * Handles the user registration process.
    */
   addUser() {
     if (this.registerForm.valid) {
-      this.userService.register(this.registerForm.value);
+      // Hash the password before sending
+      const formValue = { ...this.registerForm.value };
+      formValue.password = this.passwordService.hashPassword(formValue.password);
 
-      // Reset the form after submit
-      this.registerForm.reset();
-      // Navigate to the profile page after successful registration
-      this.router.navigateByUrl('/profile');
+      this.apiUserService.postUser(formValue).subscribe((user) => {
+        this.userService.setUser(user);
+        alert('Inscription réussie ! Veuillez vous connecter.');
+
+        // Navigate to the auth page after successful registration
+        this.router.navigateByUrl('/auth');
+      });
     }
   }
 }

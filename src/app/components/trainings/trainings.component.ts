@@ -3,6 +3,7 @@ import { Component, OnInit, signal, computed } from '@angular/core';
 import { TrainingModel } from '../../models/training/training.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ApiTrainingService } from '../../services/api/api-training.service';
 
 @Component({
   selector: 'app-trainings',
@@ -29,82 +30,19 @@ export class TrainingsComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
+    private apiTraining: ApiTrainingService,
   ) {}
 
   // Initialize the list of available trainings
   ngOnInit(): void {
-    this.listTrainings.set([
-      {
-        id: 1,
-        name: 'Java',
-        description: 'Formation Java SE 8 sur 5 jours',
-        price: 1500,
-        quantity: 1,
-      },
-      {
-        id: 2,
-        name: 'DotNet',
-        description: 'Formation DotNet sur 3 jours',
-        price: 1000,
-        quantity: 1,
-      },
-      {
-        id: 3,
-        name: 'Python',
-        description: 'Formation Python sur 5 jours',
-        price: 1500,
-        quantity: 1,
-      },
-      {
-        id: 4,
-        name: 'React',
-        description: 'Formation React sur 2 jours',
-        price: 800,
-        quantity: 1,
-      },
-      {
-        id: 5,
-        name: 'Angular',
-        description: 'Formation Angular avancé avec Signals sur 4 jours',
-        price: 1400,
-        quantity: 1,
-      },
-      {
-        id: 6,
-        name: 'Spring Boot',
-        description: 'Développement d’API REST avec Spring Boot sur 5 jours',
-        price: 1600,
-        quantity: 1,
-      },
-      {
-        id: 7,
-        name: 'Node.js',
-        description: 'Création d’API backend avec Node.js et Express sur3 jours',
-        price: 1100,
-        quantity: 1,
-      },
-      {
-        id: 8,
-        name: 'Docker',
-        description: 'Containerisation d’applications avec Docker sur 2 jours',
-        price: 900,
-        quantity: 1,
-      },
-      {
-        id: 9,
-        name: 'Git & GitHub',
-        description: 'Gestion de versions et collaboration avec Git et GitHub sur 2 jours',
-        price: 700,
-        quantity: 1,
-      },
-      {
-        id: 10,
-        name: 'TypeScript',
-        description: 'Maîtriser TypeScript pour les projets frontend et backend sur 3 jours',
-        price: 1000,
-        quantity: 1,
-      },
-    ]);
+    this.getAllTrainings();
+  }
+
+  getAllTrainings() {
+    this.apiTraining.getTrainings().subscribe({
+      next: (trainings) => this.listTrainings.set(trainings),
+      error: (err) => console.error('Error fetching trainings:', err.message),
+    });
   }
 
   // Add the selected training to the cart and navigate to the cart page

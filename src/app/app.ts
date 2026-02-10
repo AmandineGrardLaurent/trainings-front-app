@@ -1,3 +1,4 @@
+import { UserService } from './services/user/user.service';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 
@@ -6,7 +7,18 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css',
+  standalone: true,
 })
 export class App {
   protected readonly title = signal('trainings-front-app');
+
+  constructor(private userService: UserService) {}
+
+  isLoggedIn = () => {
+    return this.userService.getUser();
+  };
+
+  isAdmin = () => {
+    return this.userService.isAdmin();
+  };
 }

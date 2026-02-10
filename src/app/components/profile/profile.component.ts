@@ -1,25 +1,50 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { UserModel } from '../../models/user/user.model';
 import { UserService } from '../../services/user/user.service';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { ApiOrderService } from '../../services/api/api-order.service';
+import { OrderModel } from '../../models/order/order.model';
+import { OrdersComponent } from '../orders/orders.component';
 
 @Component({
   selector: 'app-profile.component',
-  imports: [],
+  imports: [CommonModule, OrdersComponent],
   templateUrl: './profile.component.html',
   standalone: true,
 })
-export class ProfileComponent {
-  // Signal that holds the user state (read-only)
-  userSignal;
-
+export class ProfileComponent implements OnInit {
   // Local variable to hold the current value of the user
   userValue: UserModel | null = null;
+  listOrders: OrderModel[] = [];
 
-  constructor(private userService: UserService) {
-    // Get the user signal from the UserService
-    this.userSignal = this.userService.getUser();
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private apiOrderService: ApiOrderService,
+    private cdr: ChangeDetectorRef,
+  ) {
+    this.userValue = this.userService.getUser();
+  }
 
-    // Read the current value of the signal and store it in a local variable
-    this.userValue = this.userSignal();
+  ngOnInit(): void {
+    const userId = this.userService.getUserId();
+    this.getOrders(Number(userId));
+  }
+
+  logout() {
+    this.userService.logoutUser();
+    alert('Déconnexion réussie !');
+    this.router.navigateByUrl('/');
+  }
+
+  getOrders(userId: number) {
+    this.apiOrderService.getOrdersByUser(userId).subscribe({
+      next: (listOrders) => {
+        this.listOrders = listOrders;
+        this.cdr.detectChanges();
+      },
+      error: (err) => console.error('Error fetching orders:', err.message),
+    });
   }
 }

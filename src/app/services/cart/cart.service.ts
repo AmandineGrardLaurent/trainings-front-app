@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { TrainingModel } from '../../models/training/training.model';
 import { CartModel } from '../../models/cart/cart.model';
 
+import { ApiOrderService } from '../api/api-order.service';
+import { UserModel } from '../../models/user/user.model';
+
 @Injectable({
   // Makes this service a singleton and injectable throughout the app
   providedIn: 'root',
@@ -16,6 +19,8 @@ export class CartService {
 
   // Expose the trainings signal as a readonly signal
   trainings = this.cart.trainings.asReadonly();
+
+  constructor(private apiOrderService: ApiOrderService) {}
 
   /**
    * Adds a training to the cart
@@ -50,5 +55,16 @@ export class CartService {
 
   updateTrainingQuantityCart(training: TrainingModel, quantity: number) {
     this.cart.updateTrainingQuantity(training, quantity);
+  }
+
+  addOrder(user: UserModel) {
+    const trainingsList = this.cart.trainings();
+    const totalPrice = this.getTotalCart();
+
+    return {
+      user,
+      trainingsList,
+      totalPrice,
+    };
   }
 }

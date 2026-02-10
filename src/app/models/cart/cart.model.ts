@@ -30,6 +30,7 @@ export class CartModel {
         };
         return updated;
       }
+      console.log([...trainings, training]);
       return [...trainings, training];
     });
   }

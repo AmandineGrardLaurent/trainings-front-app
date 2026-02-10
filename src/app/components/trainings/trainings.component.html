@@ -1,11 +1,4 @@
 <div class="p-6 max-w-4xl mx-auto">
-  <!-- <button
-    (click)="displayTrainings()"
-    class="mb-6 px-4 py-2 bg-pink-400 text-white rounded-3xl hover:bg-pink-500 transition"
-  >
-    Formations
-  </button> -->
-
   <h2 class="text-3xl font-bold mb-4 text-pink-500 text-center">
     La liste des formations disponibles
   </h2>
@@ -16,7 +9,7 @@
     (input)="searchText.set($any($event.target).value)"
   />
 
-  @if (filteredTrainings().length) {
+  @if (listTrainings().length) {
     <table class="w-full border-collapse">
       <thead>
         <tr class="bg-gray-200 text-gray-700">
@@ -48,7 +41,7 @@
             <td class="border px-4 py-2">
               <div class="flex items-center justify-center h-full">
                 <button
-                  class="px-4 py-2 bg-pink-400 text-white rounded-xl hover:bg-pink-500 transition font-medium whitespace-nowrap"
+                  class="px-4 py-2 bg-pink-400 text-white rounded-3xl hover:bg-pink-500 transition font-medium whitespace-nowrap"
                   (click)="addToCart(training)"
                 >
                   Ajouter panier

@@ -15,18 +15,13 @@
         <span class="font-semibold text-gray-600">Email:</span>
         <span class="text-gray-800">{{ userValue.email }}</span>
       </p>
-      <p class="flex justify-between bg-gray-50 p-2 rounded">
-        <span class="font-semibold text-gray-600">Mot de passe:</span>
-        <span class="text-gray-800">{{ userValue.password }}</span>
-      </p>
     </div>
 
-    <!-- <button
-      class="mt-6 w-full bg-pink-400 text-white py-2 rounded-2xl hover:bg-pink-500 transition"
-    >
-      Modifier mon profil
-    </button> -->
+    <button (click)="logout()" class="text-pink-400 hover:text-pink-500 font-medium m-3">
+      Se déconnecter
+    </button>
   </div>
+  <app-orders-component [listOrders]="listOrders"></app-orders-component>
 } @else {
-  <p class="text-gray-500 italic mt-4 text-center">Veuillez vous inscrire !!</p>
+  <p class="text-gray-500 italic mt-4 text-center">Veuillez vous connecter !!</p>
 }
