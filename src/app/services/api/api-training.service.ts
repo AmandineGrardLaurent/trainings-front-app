@@ -33,4 +33,12 @@ export class ApiTrainingService {
   public deleteTraining(id: number) {
     return this.http.delete(`${environment.apiUrl}/trainings/${id}`);
   }
+
+  public postTraining(trainingForm: TrainingModel) {
+    const training = {
+      ...trainingForm,
+      quantity: 1,
+    };
+    return this.http.post<TrainingModel>(`${environment.apiUrl}/trainings`, training);
+  }
 }
