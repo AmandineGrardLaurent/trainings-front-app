@@ -9,7 +9,10 @@ import { TrainingFormComponent } from '../training-form/training-form.component'
 import { CommonModule } from '@angular/common';
 
 /**
- * Admin dashboard component.
+ * Admin dashboard component
+ *
+ * Main component for managing users and trainings.
+ * Allows displaying, deleting, and updating entities from the admin interface.
  */
 @Component({
   selector: 'app-admin-dashboard.component',
@@ -24,7 +27,12 @@ export class AdminDashboardComponent implements OnInit {
   // List of all trainings
   trainings: TrainingModel[] = [];
 
-  // Creates an instance of AdminDashboardComponent
+  /**
+   * Constructor
+   * @param apiUserService Service to communicate with the user API
+   * @param cdr ChangeDetectorRef to manually trigger template updates
+   * @param apiTrainingService Service to communicate with the training API
+   */
   constructor(
     private apiUserService: ApiUserService,
     private cdr: ChangeDetectorRef,
@@ -96,10 +104,17 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
+  /**
+   * Updates a training after editing in the form.
+   * @param event Object containing the training ID and the updated data
+   */
   onUpdateTraining(event: { id: number; data: Partial<TrainingModel> }) {
     this.apiTrainingService.updateTraining(event.id, event.data).subscribe({
       next: (updated) => {
+        // Find the index of the updated training in the local list
         const index = this.trainings.findIndex((training) => training.id === event.id);
+
+        // If found, update it locally without reloading the whole page
         if (index !== -1) {
           this.trainings[index] = { ...this.trainings[index], ...updated };
         }

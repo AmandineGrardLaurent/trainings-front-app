@@ -5,6 +5,14 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ApiTrainingService } from '../../services/api/api-training.service';
 
+/**
+ * Component responsible for displaying all available trainings.
+ *
+ * Handles:
+ * - Fetching trainings from the backend
+ * - Searching/filtering trainings by name or description
+ * - Adding a training to the cart and navigating to the cart page
+ */
 @Component({
   selector: 'app-trainings',
   standalone: true,
@@ -12,8 +20,10 @@ import { ApiTrainingService } from '../../services/api/api-training.service';
   imports: [CommonModule],
 })
 export class TrainingsComponent implements OnInit {
-  // Array to hold available trainings
+  // Signal holding the array of all available trainings
   listTrainings = signal<TrainingModel[]>([]);
+
+  // Signal holding the current search text for filtering trainings
   searchText = signal('');
 
   // Filtered trainings (reactive)
@@ -27,6 +37,12 @@ export class TrainingsComponent implements OnInit {
     );
   });
 
+  /**
+   * Constructor
+   * @param cartService Service to manage the shopping cart
+   * @param router Angular Router to navigate between pages
+   * @param apiTraining Service to fetch trainings from the backend
+   */
   constructor(
     private cartService: CartService,
     private router: Router,
@@ -38,6 +54,7 @@ export class TrainingsComponent implements OnInit {
     this.getAllTrainings();
   }
 
+  // Fetches all trainings from the API and updates the listTrainings signal.
   getAllTrainings() {
     this.apiTraining.getTrainings().subscribe({
       next: (trainings) => this.listTrainings.set(trainings),
