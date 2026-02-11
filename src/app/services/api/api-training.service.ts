@@ -34,6 +34,7 @@ export class ApiTrainingService {
     return this.http.delete(`${environment.apiUrl}/trainings/${id}`);
   }
 
+  // Creates a new training in the backend.
   public postTraining(trainingForm: TrainingModel) {
     const training = {
       ...trainingForm,
@@ -42,6 +43,7 @@ export class ApiTrainingService {
     return this.http.post<TrainingModel>(`${environment.apiUrl}/trainings`, training);
   }
 
+  // Updates an existing training by its identifier.
   public updateTraining(id: number, trainingForm: Partial<TrainingModel>) {
     return this.http.patch<TrainingModel>(`${environment.apiUrl}/trainings/${id}`, trainingForm);
   }

@@ -4,8 +4,13 @@ import { Component, OnInit, effect } from '@angular/core';
 import { TrainingModel } from '../../models/training/training.model';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart/cart.service';
-// import { Router } from '@angular/router';
 
+/**
+ * Component responsible for displaying and managing the user's shopping cart.
+ *
+ * Handles adding/removing trainings, updating quantities, calculating totals,
+ * and placing orders.
+ */
 @Component({
   selector: 'app-cart.component',
   standalone: true,
@@ -13,10 +18,18 @@ import { CartService } from '../../services/cart/cart.service';
   templateUrl: './cart.component.html',
 })
 export class CartComponent implements OnInit {
-  // Local array to hold the trainings in the cart
+  // Array of trainings currently in the cart
   listCartTrainings: TrainingModel[] = [];
+
+  // Total price of the cart
   totalPrice: number = 0;
 
+  /**
+   * Constructor
+   * @param cartService Service that manages the cart state
+   * @param userService Service that manages user authentication
+   * @param apiOrderService Service to interact with the backend for orders
+   */
   constructor(
     private cartService: CartService,
     private userService: UserService,
@@ -49,10 +62,17 @@ export class CartComponent implements OnInit {
     this.cartService.updateTrainingQuantityCart(training, quantity);
   }
 
+  // Checks if a user is logged in
   isLoggedIn = () => {
     return this.userService.getUser();
   };
 
+  /**
+   * Places an order for the current user.
+   * - Checks if the user is logged in
+   * - Sends the order to the backend API
+   * - Clears the cart after successful order
+   */
   placeOrder() {
     const user = this.userService.getUser()!;
 
