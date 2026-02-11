@@ -38,6 +38,7 @@ export class UserService {
     return this.user;
   }
 
+  // returns the currently logged-in user id
   getUserId() {
     return this.user?.id;
   }

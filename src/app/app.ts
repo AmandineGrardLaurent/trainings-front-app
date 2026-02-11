@@ -14,10 +14,12 @@ export class App {
 
   constructor(private userService: UserService) {}
 
+  // Checks if a user is currently logged in.
   isLoggedIn = () => {
     return this.userService.getUser();
   };
 
+  // Checks if the currently logged-in user has admin privileges.
   isAdmin = () => {
     return this.userService.isAdmin();
   };

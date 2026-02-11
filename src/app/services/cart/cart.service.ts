@@ -53,10 +53,22 @@ export class CartService {
     return this.cart.totalPrice();
   }
 
+  /**
+   * Updates the quantity of a specific training in the cart.
+   *
+   * @param training - The training to update.
+   * @param quantity - The new quantity.
+   */
   updateTrainingQuantityCart(training: TrainingModel, quantity: number) {
     this.cart.updateTrainingQuantity(training, quantity);
   }
 
+  /**
+   * Prepares an order object based on the current cart contents and user.
+   *
+   * @param user - The user placing the order.
+   * @returns An order object containing the user, trainings list, and total price.
+   */
   addOrder(user: UserModel) {
     const trainingsList = this.cart.trainings();
     const totalPrice = this.getTotalCart();
